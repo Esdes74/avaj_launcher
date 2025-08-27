@@ -4,16 +4,16 @@ import avaj_launcher.utils.Coordinates;
 import java.lang.String;
 
 public class WeatherProvider {
-	private static	WeatherProvider	instance;
-	private			String[]		weather;
+	private static	WeatherProvider instance;
+	private			String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
 
-	private	WeatherProvider() {};
+	private			WeatherProvider() {};
 
-	public	static WeatherProvider	getInstance() {
+	public static	WeatherProvider getInstance() {
 		if (instance == null)
 			instance = new WeatherProvider();
 		return instance;
 	};
 
-	public	String	getCurrentWeather(Coordinates p_coordinates) { return ""; };
+	public			String getCurrentWeather(Coordinates p_coordinates) { return ""; };
 }
