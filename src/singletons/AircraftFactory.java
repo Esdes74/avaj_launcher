@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class AircraftFactory {
-	private	static	AircraftFactory instance;
-	private			Tower registeredTower;
+	private	static	AircraftFactory instance = null;
+	private			Tower registeredTower = null;
 	private			ArrayList<Long> registeredId;
 
 	private			AircraftFactory() {};
@@ -41,13 +41,14 @@ public class AircraftFactory {
 
 		if (p_type.equalsIgnoreCase("helicopter"))
 			newFlyable = new Helicopter(id, p_name, p_coordinates);
-		if (p_type.equalsIgnoreCase("baloon"))
+		else if (p_type.equalsIgnoreCase("baloon"))
 			newFlyable = new Baloon(id, p_name, p_coordinates);
-		if (p_type.equalsIgnoreCase("jetplane"))
+		else if (p_type.equalsIgnoreCase("jetplane"))
 			newFlyable = new JetPlane(id, p_name, p_coordinates);
 
 		registeredId.add(id);
-		registeredTower.register(newFlyable);
+		if (registeredTower != null)
+			registeredTower.register(newFlyable);
 
 		return newFlyable;
 	};
