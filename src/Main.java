@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.String;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
 	public static	void main(String[] args) {
@@ -33,7 +35,19 @@ public class Main {
 		}
 	}
 
-	private static	void parseArgumentNameAndTestOpening(String name) {};
+	private static	void parseArgumentNameAndTestOpening(String name) {
+		if (Files.exists(Paths.get(name)) == false)
+			exit(1, "File error: File '" + name + "' doesn't exists");
+
+		if (Files.isRegularFile(Paths.get(name)) == false)
+			exit(1, "File error: File '" + name + "' is a repository");
+		
+		if (Files.isReadable(Paths.get(name)) == false)
+			exit(1, "File error: Can't read '" + name + "'");
+
+		if (name.endsWith(".txt") == false)
+			exit(1, "File error: Wrong extension");
+	};
 
 	private static	void parseFirstLine(String line) {
 		String[]	splitted;
