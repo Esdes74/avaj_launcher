@@ -1,5 +1,6 @@
 package src;
 
+import src.utils.Utils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,8 +10,9 @@ import java.nio.file.Paths;
 
 public class Main {
 	public static	void main(String[] args) {
-		String	line;
-		int		simulationLenght = 0;
+		int			simulationLength = 0;
+		String		line;
+		String []	splittedLine;
 
 		if (args.length != 1) {
 			exit(1, "Must have 1 argument");
@@ -23,11 +25,12 @@ public class Main {
 				exit(1, "File error: empty file");
 			} else {
 				parseFirstLine(line);
-				simulationLenght = Integer.parseInt(line);
+				simulationLength = Integer.parseInt(line);
 			}
 
 			while ((line = reader.readLine()) != null) {
 				System.out.println(line);
+				splittedLine = parseLine(line);
 			}
 
 		} catch (IOException e) {
@@ -41,7 +44,7 @@ public class Main {
 
 		if (Files.isRegularFile(Paths.get(name)) == false)
 			exit(1, "File error: File '" + name + "' is a repository");
-		
+
 		if (Files.isReadable(Paths.get(name)) == false)
 			exit(1, "File error: Can't read '" + name + "'");
 
@@ -53,41 +56,33 @@ public class Main {
 		String[]	splitted;
 
 		splitted = line.split(" ");
-		if (line.isBlank() || splitted.length != 1 || isOnlyNumber(line) == false) {
+		if (line.isBlank() || 
+		splitted.length != 1 || 
+		Utils.isOnlyNumber(line) == false) {
 			exit(1, "Reading error: Wrong first line format");
 		}
 	}
 
-	private static	boolean isOnlyNumber(String line) {
-		int	index = 0;
+	private static	String[] parseLine(String line) {
+		String[]	splitted;
+		int			height = -1;
 
-		while (index < line.length() && isNumber(line.charAt(index))) {
-			index++;
-		}
+		splitted = line.split(" ");
+		if (splitted.length != 5)
+			exit(1, "Reading error: Wrong line format");
 
-		if (index == line.length())
-			return true;
-		return false;
-	}
+		if (splitted[0].equalsIgnoreCase("baloon") == false && 
+		splitted[0].equalsIgnoreCase("helicopter") == false && 
+		splitted[0].equalsIgnoreCase("jetplane") == false)
+			exit(1, "Reading error: Wrong aircraft type");
 
-	private static	boolean isOnlyAlphabet(String line) {
-		int	index = 0;
-
-		while (index < line.length() && isAlphabet(line.charAt(index))) {
-			index++;
-		}
-
-		if (index == line.length())
-			return true;
-		return false;
-	}
-
-	private static	boolean isNumber(char c) {
-		return c >= '0' && c <= '9';
-	}
-
-	private static	boolean isAlphabet(char c) {
-		return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+		height = Integer.parseInt(splitted[4]);
+		if ((Utils.isOnlyNumber(splitted[2]) == false ||
+		Utils.isOnlyNumber(splitted[3]) == false ||
+		Utils.isOnlyNumber(splitted[4]) == false) && height > 0 && height <= 100)
+			exit(1, "Reading error: Wrong informations");
+		
+		return splitted;
 	}
 
 	private static	void exit(int code, String message) {
