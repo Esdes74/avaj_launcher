@@ -1,7 +1,7 @@
-package avaj_launcher.abst;
+package src.abst;
 
-import avaj_launcher.model.WeatherTower;
-import avaj_launcher.singleton.AircraftFactory;
+import src.model.WeatherTower;
+import src.singleton.AircraftFactory;
 
 public abstract class Flyable {
 	protected		WeatherTower weatherTower;

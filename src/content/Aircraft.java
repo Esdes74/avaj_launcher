@@ -1,7 +1,7 @@
-package avaj_launcher.content;
+package src.content;
 
-import avaj_launcher.abst.Flyable;
-import avaj_launcher.utils.Coordinates;
+import src.abst.Flyable;
+import src.utils.Coordinates;
 import java.lang.String;
 
 public class Aircraft extends Flyable {

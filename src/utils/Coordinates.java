@@ -1,4 +1,4 @@
-package avaj_launcher.utils;
+package src.utils;
 
 public class Coordinates {
 	private	int longitude;

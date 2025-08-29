@@ -1,1 +1,1 @@
-package avaj_launcher;
+package src;

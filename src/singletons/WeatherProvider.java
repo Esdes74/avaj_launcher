@@ -1,6 +1,6 @@
-package avaj_launcher.singleton;
+package src.singleton;
 
-import avaj_launcher.utils.Coordinates;
+import src.utils.Coordinates;
 import java.lang.String;
 
 public class WeatherProvider {

@@ -1,8 +1,8 @@
-package avaj_launcher.model;
+package src.model;
 
-import avaj_launcher.content.Aircraft;
-import avaj_launcher.singleton.WeatherProvider;
-import avaj_launcher.utils.Coordinates;
+import src.content.Aircraft;
+import src.singleton.WeatherProvider;
+import src.utils.Coordinates;
 
 public class JetPlane extends Aircraft {
 	public	JetPlane(long p_id, String p_name, Coordinates p_coordinates) { super(p_id, p_name, p_coordinates); };

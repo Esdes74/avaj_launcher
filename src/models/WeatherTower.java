@@ -1,8 +1,8 @@
-package avaj_launcher.model;
+package src.model;
 
-import avaj_launcher.content.Tower;
-import avaj_launcher.utils.Coordinates;
-import avaj_launcher.singleton.WeatherProvider;
+import src.content.Tower;
+import src.utils.Coordinates;
+import src.singleton.WeatherProvider;
 import java.lang.String;
 
 public class WeatherTower extends Tower {

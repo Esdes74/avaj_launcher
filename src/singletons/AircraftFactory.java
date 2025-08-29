@@ -1,11 +1,11 @@
-package avaj_launcher.singleton;
+package src.singleton;
 
-import avaj_launcher.abst.Flyable;
-import avaj_launcher.utils.Coordinates;
-import avaj_launcher.model.Helicopter;
-import avaj_launcher.model.Baloon;
-import avaj_launcher.model.JetPlane;
-import avaj_launcher.content.Tower;
+import src.abst.Flyable;
+import src.utils.Coordinates;
+import src.model.Helicopter;
+import src.model.Baloon;
+import src.model.JetPlane;
+import src.content.Tower;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;

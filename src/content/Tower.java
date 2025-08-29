@@ -1,6 +1,6 @@
-package avaj_launcher.content;
+package src.content;
 
-import avaj_launcher.abst.Flyable;
+import src.abst.Flyable;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
