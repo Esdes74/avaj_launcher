@@ -1,10 +1,11 @@
-package src.singleton;
+package src.singletons;
 
 import src.abst.Flyable;
 import src.utils.Coordinates;
-import src.model.Helicopter;
-import src.model.Baloon;
-import src.model.JetPlane;
+import src.utils.Utils;
+import src.models.aircraft.Helicopter;
+import src.models.aircraft.Baloon;
+import src.models.aircraft.JetPlane;
 import src.content.Tower;
 import java.lang.String;
 import java.util.ArrayList;

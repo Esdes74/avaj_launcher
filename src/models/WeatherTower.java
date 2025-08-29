@@ -1,8 +1,8 @@
-package src.model;
+package src.models;
 
 import src.content.Tower;
 import src.utils.Coordinates;
-import src.singleton.WeatherProvider;
+import src.singletons.WeatherProvider;
 import java.lang.String;
 
 public class WeatherTower extends Tower {

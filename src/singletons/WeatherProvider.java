@@ -1,4 +1,4 @@
-package src.singleton;
+package src.singletons;
 
 import src.utils.Coordinates;
 import java.lang.String;

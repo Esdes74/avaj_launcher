@@ -1,7 +1,7 @@
-package src.model;
+package src.models.aircraft;
 
 import src.content.Aircraft;
-import src.singleton.WeatherProvider;
+import src.singletons.WeatherProvider;
 import src.utils.Coordinates;
 
 public class Helicopter extends Aircraft {

@@ -1,7 +1,7 @@
 package src.abst;
 
-import src.model.WeatherTower;
-import src.singleton.AircraftFactory;
+import src.models.WeatherTower;
+import src.singletons.AircraftFactory;
 
 public abstract class Flyable {
 	protected		WeatherTower weatherTower;
