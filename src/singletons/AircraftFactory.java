@@ -1,5 +1,6 @@
 package src.singletons;
 
+import src.ExitException;
 import src.abst.Flyable;
 import src.utils.Coordinates;
 import src.utils.Utils;
@@ -17,8 +18,8 @@ public class AircraftFactory {
 	private			ArrayList<Long> registeredId;
 
 	private			AircraftFactory() {};
-	private			long generateId() {
 		long	lastId;
+	private			long generateId() throws ExitException {
 
 		try {
 			lastId = registeredId.getLast();
@@ -36,7 +37,7 @@ public class AircraftFactory {
 		return instance;
 	};
 
-	public			Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) {
+	public			Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) throws ExitException {
 		long	id = generateId();
 		Flyable	newFlyable = null;
 

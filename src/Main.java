@@ -1,6 +1,7 @@
 package src;
 
 import src.utils.Utils;
+import src.ExitException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,10 +36,12 @@ public class Main {
 
 		} catch (IOException e) {
 			Utils.exit(1, "Reading error: " + e.getMessage());
+		} catch (ExitException e) {
+			System.exit(e.getCode());
 		}
 	}
 
-	private static	void parseArgumentNameAndTestOpening(String name) {
+	private static	void parseArgumentNameAndTestOpening(String name) throws ExitException {
 		if (Files.exists(Paths.get(name)) == false)
 			Utils.exit(1, "File error: File '" + name + "' doesn't exists");
 
@@ -52,7 +55,7 @@ public class Main {
 			Utils.exit(1, "File error: Wrong extension");
 	};
 
-	private static	void parseFirstLine(String line) {
+	private static	void parseFirstLine(String line) throws ExitException {
 		String[]	splitted;
 
 		splitted = line.split(" ");
@@ -63,7 +66,7 @@ public class Main {
 		}
 	}
 
-	private static	String[] parseLine(String line) {
+	private static	String[] parseLine(String line) throws ExitException {
 		String[]	splitted;
 		int			height = -1;
 

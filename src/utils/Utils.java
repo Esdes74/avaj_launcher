@@ -1,5 +1,7 @@
 package src.utils;
 
+import src.ExitException;
+
 public class Utils {
 	public static	boolean isOnlyNumber(String line) {
 		int	index = 0;
@@ -33,8 +35,8 @@ public class Utils {
 		return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 	}
 
-	public static	void exit(int code, String message) {
+	public static	void exit(int code, String message) throws ExitException {
 		System.out.println(message);
-		System.exit(code);
+		throw new ExitException(code);
 	}
 }
