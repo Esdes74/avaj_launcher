@@ -17,15 +17,18 @@ public class AircraftFactory {
 	private			Tower registeredTower = null;
 	private			ArrayList<Long> registeredId;
 
-	private			AircraftFactory() {};
-		long	lastId;
+	private			AircraftFactory() { registeredId = new ArrayList<Long>(); };
 	private			long generateId() throws ExitException {
+		long	lastId = -1;
 
 		try {
-			lastId = registeredId.getLast();
+			if (registeredId != null && registeredId.isEmpty() == false)
+				lastId = registeredId.getLast();
+			else
+				lastId = -1;
 		}
 		catch (NoSuchElementException expt) {
-			lastId = -1;
+			Utils.exit(1, "Error: No such element in arraylist");
 		}
 
 		return lastId + 1;

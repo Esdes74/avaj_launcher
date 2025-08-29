@@ -1,6 +1,9 @@
 package src;
 
 import src.utils.Utils;
+import src.utils.Coordinates;
+import src.singletons.AircraftFactory;
+import src.models.WeatherTower;
 import src.ExitException;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,10 +13,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Main {
-	public static	void main(String[] args) {
-		int			simulationLength = 0;
-		String		line;
-		String []	splittedLine;
+	public static	void main(String[] args) throws ExitException {
+		int				simulationLength = 0;
+		String			line;
+		String[]		splittedLine;
+		WeatherTower	controlTower = new WeatherTower();
 
 		if (args.length != 1) {
 			Utils.exit(1, "Must have 1 argument");
@@ -29,9 +33,12 @@ public class Main {
 				simulationLength = Integer.parseInt(line);
 			}
 
+			AircraftFactory.getInstance().registerTower(controlTower);
+
 			while ((line = reader.readLine()) != null) {
 				System.out.println(line);
 				splittedLine = parseLine(line);
+				createAircraft(splittedLine);
 			}
 
 		} catch (IOException e) {
@@ -88,8 +95,18 @@ public class Main {
 		return splitted;
 	}
 
-	private static	void exit(int code, String message) {
-		System.out.println(message);
-		System.exit(code);
+	private static	void createAircraft(String[] splittedLine) throws ExitException {
+		int			longitude, latitude, height;
+		String		type, name;
+		Coordinates	lineCoordinates;
+
+		longitude = Integer.parseInt(splittedLine[2]);
+		latitude = Integer.parseInt(splittedLine[3]);
+		height = Integer.parseInt(splittedLine[4]);
+		lineCoordinates = Coordinates.createInstance(longitude, latitude, height);
+
+		type = splittedLine[0];
+		name = splittedLine[1];
+		AircraftFactory.getInstance().newAircraft(type, name, lineCoordinates);
 	}
 }
