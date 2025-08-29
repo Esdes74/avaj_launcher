@@ -32,4 +32,9 @@ public class Utils {
 	public static	boolean isAlphabet(char c) {
 		return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 	}
+
+	public static	void exit(int code, String message) {
+		System.out.println(message);
+		System.exit(code);
+	}
 }
