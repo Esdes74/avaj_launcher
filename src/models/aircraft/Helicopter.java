@@ -13,14 +13,28 @@ public class Helicopter extends Aircraft {
 		String	currentWeather;
 
 		currentWeather = WeatherProvider.getInstance().getCurrentWeather(coordinates);
-		if (currentWeather.contentEquals("RAIN"))
+		if (currentWeather.contentEquals("RAIN")) {
+			coordinates.setLongitude(coordinates.getLongitude() + 5);
 			PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + "): Here's Jhonny !!");
-		else if (currentWeather.contentEquals("FOG"))
+		}
+		else if (currentWeather.contentEquals("FOG")) {
+			coordinates.setLongitude(coordinates.getLongitude() + 1);
 			PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + "): Tell my wife and childrens i love them");
-		else if (currentWeather.contentEquals("SUN"))
+		}
+		else if (currentWeather.contentEquals("SUN")) {
+			coordinates.setHeight(coordinates.getHeight() + 2);
+			coordinates.setLongitude(coordinates.getLongitude() + 10);
 			PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + "): I love my life !!!");
-		else if (currentWeather.contentEquals("SNOW"))
+		}
+		else if (currentWeather.contentEquals("SNOW")) {
+			coordinates.setHeight(coordinates.getHeight() - 12);
 			PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + "): Winter is comming");
+		}
+
+		if (coordinates.getHeight() <= 0) {
+			PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + ") Landing");
+			weatherTower.unregister(this);
+		}
 	};
 
 	public	String registeredMessage() throws ExitException { return "Helicopter#" + name + "(" + id + ") Registered to weather tower"; }

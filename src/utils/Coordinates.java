@@ -21,4 +21,11 @@ public class Coordinates {
 	public	int getLongitude() { return longitude; };
 	public	int getLatitude() { return latitude; };
 	public	int getHeight() { return height; };
+	public	void setLongitude(int p_longitude) { longitude = p_longitude; };
+	public	void setLatitude(int p_latitude) { latitude = p_latitude; };
+	public	void setHeight(int p_height) {
+		height = p_height;
+		if (height > 100)
+			height = 100;
+	};
 }

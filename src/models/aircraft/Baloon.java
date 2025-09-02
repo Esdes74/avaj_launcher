@@ -13,14 +13,28 @@ public class Baloon extends Aircraft {
 		String	currentWeather;
 
 		currentWeather = WeatherProvider.getInstance().getCurrentWeather(coordinates);
-		if (currentWeather.contentEquals("RAIN"))
+		if (currentWeather.contentEquals("RAIN")) {
+			coordinates.setHeight(coordinates.getHeight() - 5);
 			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + "): It's raining, IT'S RAINING !!! It's a miracle !!!");
-		else if (currentWeather.contentEquals("FOG"))
+		}
+		else if (currentWeather.contentEquals("FOG")) {
+			coordinates.setHeight(coordinates.getHeight() - 3);
 			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + "): I can't see the ground, may i crash ?");
-		else if (currentWeather.contentEquals("SUN"))
+		}
+		else if (currentWeather.contentEquals("SUN")) {
+			coordinates.setHeight(coordinates.getHeight() + 4);
+			coordinates.setLongitude(coordinates.getLongitude() + 2);
 			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + "): What a beautifull day !");
-		else if (currentWeather.contentEquals("SNOW"))
+		}
+		else if (currentWeather.contentEquals("SNOW")) {
+			coordinates.setHeight(coordinates.getHeight() - 15);
 			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + "): Liberated, freed. I'll never lie again");
+		}
+
+		if (coordinates.getHeight() <= 0) {
+			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + ") Landing");
+			weatherTower.unregister(this);
+		}
 	};
 
 	public	String registeredMessage() throws ExitException { return "Baloon#" + name + "(" + id + ") Registered to weather tower"; }

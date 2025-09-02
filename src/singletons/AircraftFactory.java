@@ -52,7 +52,7 @@ public class AircraftFactory {
 			newFlyable = new JetPlane(id, p_name, p_coordinates);
 
 		registeredId.add(id);
-		if (registeredTower != null)
+		if (registeredTower != null) {
 			registeredTower.register(newFlyable);
 
 		return newFlyable;

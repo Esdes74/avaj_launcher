@@ -22,8 +22,8 @@ public class Tower {
 	}
 
 	public		void closeTower() throws ExitException {
-		ArrayList<Flyable> copy = new ArrayList<>(observers);
-		for (Flyable aircraft : copy) {
+		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);
+		for (Flyable aircraft : observersCopy) {
 			try {
 				unregister(aircraft);
 			} catch (ExitException e) {
@@ -35,7 +35,8 @@ public class Tower {
 	public		ArrayList<Flyable> getObservers() { return observers; };
 
 	protected	void conditionChanged() throws ExitException {
-		for (Flyable aircraft : observers) {
+		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);
+		for (Flyable aircraft : observersCopy) {
 			try {
 				aircraft.updateConditions();
 			} catch (ExitException e) {

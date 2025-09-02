@@ -13,6 +13,7 @@ public abstract class Flyable {
 		weatherTower = p_tower;
 		AircraftFactory.getInstance().registerTower(p_tower);
 	};
+
 	public abstract	String registeredMessage() throws ExitException;
 	public abstract	String unregisteredMessage() throws ExitException;
 }
