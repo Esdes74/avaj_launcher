@@ -20,7 +20,7 @@ public class PrintInFile {
 
 	private			void openFile(String fileName) throws ExitException {
 		try {
-			FileWriter openedFile = new FileWriter(fileName, true);
+			FileWriter openedFile = new FileWriter(fileName, false);
 			file = new BufferedWriter(openedFile);
 		} catch (IOException expt) {
 			closeFile();
