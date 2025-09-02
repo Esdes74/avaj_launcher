@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 public class Main {
 	public static	void main(String[] args) throws ExitException {
-		int				simulationLength = 0;
+		int				simulationLength = 0, weathersChanged = 0;
 		String			line;
 		String[]		splittedLine;
 		WeatherTower	controlTower = new WeatherTower();
@@ -45,6 +45,11 @@ public class Main {
 			Utils.exit(1, "Reading error: " + e.getMessage());
 		} catch (ExitException e) {
 			System.exit(e.getCode());
+		}
+
+		while (weathersChanged < simulationLength) {
+			controlTower.changeWeather();
+			weathersChanged++;
 		}
 
 		controlTower.closeTower();

@@ -22,7 +22,6 @@ public class Tower {
 	}
 
 	public		void closeTower() throws ExitException {
-		// observers.forEach(aircraft -> unregister(aircraft));
 		ArrayList<Flyable> copy = new ArrayList<>(observers);
 		for (Flyable aircraft : copy) {
 			try {
@@ -36,14 +35,12 @@ public class Tower {
 	public		ArrayList<Flyable> getObservers() { return observers; };
 
 	protected	void conditionChanged() throws ExitException {
-		ListIterator<Flyable>	iter = null;
-		Flyable					currentAircraft = null;
-
-		iter = observers.listIterator();
-
-		while (iter.hasNext()) {
-			currentAircraft = iter.next();
-			currentAircraft.updateConditions();
+		for (Flyable aircraft : observers) {
+			try {
+				aircraft.updateConditions();
+			} catch (ExitException e) {
+				Utils.exit(1, "Error: Can't update weather for all aircrafts");
+			}
 		}
 	};
 }

@@ -15,5 +15,5 @@ public class WeatherProvider {
 		return instance;
 	};
 
-	public			String getCurrentWeather(Coordinates p_coordinates) { return ""; };
+	public			String getCurrentWeather(Coordinates p_coordinates) { return "SUN"; }; // TODO: Modifier pour un vrais algorithme de génération
 }
