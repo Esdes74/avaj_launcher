@@ -12,7 +12,7 @@ public class JetPlane extends Aircraft {
 	public	void updateConditions() throws ExitException {
 		String	currentWeather;
 
-		currentWeather = WeatherProvider.getInstance().getCurrentWeather(coordinates);
+		currentWeather = weatherTower.getWeather(coordinates);
 		if (currentWeather.contentEquals("RAIN")) {
 			coordinates.setLatitude(coordinates.getLatitude() + 5);
 			PrintInFile.getInstance().print("JetPlane#" + name + "(" + id + "): It's raining men! Hallelujah!");

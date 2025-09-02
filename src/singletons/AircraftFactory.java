@@ -7,14 +7,14 @@ import src.utils.Utils;
 import src.models.aircraft.Helicopter;
 import src.models.aircraft.Baloon;
 import src.models.aircraft.JetPlane;
-import src.content.Tower;
+import src.models.WeatherTower;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class AircraftFactory {
 	private	static	AircraftFactory instance = null;
-	private			Tower registeredTower = null;
+	private			WeatherTower registeredTower = null;
 	private			ArrayList<Long> registeredId;
 
 	private			AircraftFactory() { registeredId = new ArrayList<Long>(); };
@@ -54,9 +54,11 @@ public class AircraftFactory {
 		registeredId.add(id);
 		if (registeredTower != null) {
 			registeredTower.register(newFlyable);
+			newFlyable.registerTower(registeredTower);
+		}
 
 		return newFlyable;
 	};
 
-	public			void registerTower(Tower p_tower) { registeredTower = p_tower; }
+	public			void registerTower(WeatherTower p_tower) { registeredTower = p_tower; }
 }

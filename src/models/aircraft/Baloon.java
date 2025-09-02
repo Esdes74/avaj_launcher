@@ -12,7 +12,7 @@ public class Baloon extends Aircraft {
 	public	void updateConditions() throws ExitException {
 		String	currentWeather;
 
-		currentWeather = WeatherProvider.getInstance().getCurrentWeather(coordinates);
+		currentWeather = weatherTower.getWeather(coordinates);
 		if (currentWeather.contentEquals("RAIN")) {
 			coordinates.setHeight(coordinates.getHeight() - 5);
 			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + "): It's raining, IT'S RAINING !!! It's a miracle !!!");
