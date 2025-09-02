@@ -12,6 +12,9 @@ public class Coordinates {
 	};
 
 	public static	Coordinates createInstance(int p_longitude, int p_latitude, int p_height) {
+		if (p_height > 100)
+			p_height = 100;
+
 		return new Coordinates(p_longitude, p_latitude, p_height);
 	};
 

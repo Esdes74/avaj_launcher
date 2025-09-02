@@ -92,7 +92,8 @@ public class Main {
 		height = Integer.parseInt(splitted[4]);
 		if ((Utils.isOnlyNumber(splitted[2]) == false ||
 		Utils.isOnlyNumber(splitted[3]) == false ||
-		Utils.isOnlyNumber(splitted[4]) == false) && height > 0 && height <= 100)
+		Utils.isOnlyNumber(splitted[4]) == false) ||
+		height <= 0)
 			Utils.exit(1, "Reading error: Wrong informations");
 		
 		return splitted;
