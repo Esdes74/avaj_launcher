@@ -18,4 +18,6 @@ public class Aircraft extends Flyable {
 	};
 
 	public		long getId() { return id; };
+	public		String registeredMessage() throws ExitException { return ""; }
+	public		String unregisteredMessage() throws ExitException { return ""; }
 }

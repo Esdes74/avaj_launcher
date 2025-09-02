@@ -11,12 +11,12 @@ public class Tower {
 	private		ArrayList<Flyable> observers = new ArrayList<Flyable>();
 
 	public		void register(Flyable p_flyable) throws ExitException {
-		PrintInFile.getInstance().print("bonjour a tous"); // TODO: Mettre les vrais messages de sortie
+		PrintInFile.getInstance().print("Tower say: " + p_flyable.registeredMessage());
 		observers.add(p_flyable);
 	}
 
-	public		void unregister(Flyable p_flyable) {
-		PrintInFile.getInstance().print("Au revoir"); // TODO: Mettre les vrais messages de sortie
+	public		void unregister(Flyable p_flyable) throws ExitException {
+		PrintInFile.getInstance().print("Tower say: " + p_flyable.unregisteredMessage());
 		observers.remove(p_flyable);
 	}
 
