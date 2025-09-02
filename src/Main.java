@@ -21,7 +21,7 @@ public class Main {
 		WeatherTower	controlTower = new WeatherTower();
 
 		if (args.length != 1) {
-			Utils.exit(1, "Must have 1 argument");
+			Utils.exit(1, "Error: Must have 1 argument");
 		}
 
 		parseArgumentNameAndTestOpening(args[0]);
@@ -37,7 +37,6 @@ public class Main {
 			AircraftFactory.getInstance().registerTower(controlTower);
 
 			while ((line = reader.readLine()) != null) {
-				System.out.println(line);
 				splittedLine = parseLine(line);
 				createAircraft(splittedLine);
 			}
@@ -47,6 +46,8 @@ public class Main {
 		} catch (ExitException e) {
 			System.exit(e.getCode());
 		}
+
+		controlTower.closeTower();
 		PrintInFile.getInstance().closeFile();
 	}
 

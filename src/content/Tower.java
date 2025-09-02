@@ -1,11 +1,12 @@
 package src.content;
 
 import src.abst.Flyable;
-import java.util.ArrayList;
-import java.util.ListIterator;
 import src.ExitException;
 import src.singletons.PrintInFile;
+import src.utils.Utils;
 import src.ExitException;
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Tower {
 	private		ArrayList<Flyable> observers = new ArrayList<Flyable>();
@@ -18,6 +19,18 @@ public class Tower {
 	public		void unregister(Flyable p_flyable) throws ExitException {
 		PrintInFile.getInstance().print("Tower say: " + p_flyable.unregisteredMessage());
 		observers.remove(p_flyable);
+	}
+
+	public		void closeTower() throws ExitException {
+		// observers.forEach(aircraft -> unregister(aircraft));
+		ArrayList<Flyable> copy = new ArrayList<>(observers);
+		for (Flyable aircraft : copy) {
+			try {
+				unregister(aircraft);
+			} catch (ExitException e) {
+				Utils.exit(1, "Error: Can't unregister all aircrafts");
+			}
+		}
 	}
 
 	public		ArrayList<Flyable> getObservers() { return observers; };
