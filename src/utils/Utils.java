@@ -1,6 +1,7 @@
 package src.utils;
 
 import src.ExitException;
+import src.singletons.PrintInFile;
 
 public class Utils {
 	public static	boolean isOnlyNumber(String line) {
@@ -37,6 +38,7 @@ public class Utils {
 
 	public static	void exit(int code, String message) throws ExitException {
 		System.out.println(message);
+		PrintInFile.getInstance().closeFile();
 		throw new ExitException(code);
 	}
 }

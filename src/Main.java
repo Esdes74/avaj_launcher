@@ -3,6 +3,7 @@ package src;
 import src.utils.Utils;
 import src.utils.Coordinates;
 import src.singletons.AircraftFactory;
+import src.singletons.PrintInFile;
 import src.models.WeatherTower;
 import src.ExitException;
 import java.io.BufferedReader;
@@ -46,6 +47,7 @@ public class Main {
 		} catch (ExitException e) {
 			System.exit(e.getCode());
 		}
+		PrintInFile.getInstance().closeFile();
 	}
 
 	private static	void parseArgumentNameAndTestOpening(String name) throws ExitException {
