@@ -28,4 +28,14 @@ public class Coordinates {
 		if (height > 100)
 			height = 100;
 	};
+
+	public boolean equals(Coordinates other) {
+		if (this == other)
+			return true;
+
+		if (other == null || getClass() != other.getClass())
+			return false;
+		
+		return longitude == other.getLongitude() && latitude == other.getLatitude() && height == other.getHeight();
+	}
 }

@@ -8,8 +8,8 @@ import src.ExitException;
 import java.lang.String;
 
 public class Helicopter extends Aircraft {
-	public	Helicopter(long p_id, String p_name, Coordinates p_coordinates) { super(p_id, p_name, p_coordinates); };
-	public	void updateConditions() throws ExitException {
+	public		Helicopter(long p_id, String p_name, Coordinates p_coordinates) { super(p_id, p_name, p_coordinates); };
+	public		void updateConditions() throws ExitException {
 		String	currentWeather;
 
 		currentWeather = weatherTower.getWeather(coordinates);
@@ -35,8 +35,27 @@ public class Helicopter extends Aircraft {
 			PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + ") Landing");
 			weatherTower.unregister(this);
 		}
+
+		crashVerification();
 	};
 
-	public	String registeredMessage() throws ExitException { return "Helicopter#" + name + "(" + id + ") Registered to weather tower"; }
-	public	String unregisteredMessage() throws ExitException { return "Helicopter#" + name + "(" + id + ") Unregistered to weather tower"; }
+	public		String registeredMessage() throws ExitException { return "Helicopter#" + name + "(" + id + ") Registered to weather tower"; }
+	public		String unregisteredMessage() throws ExitException { return "Helicopter#" + name + "(" + id + ") Unregistered to weather tower"; }
+	public		String crashMessage() throws ExitException { return "Helicopter#" + name + "(" + id + ") OOOH NO NO NO, PLEASE NOOOOO !!!"; }
+
+	protected	void crashVerification() throws ExitException {
+		ArrayList<Flyable> observers = weatherTower.getObservers();
+		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);
+
+		for (Flyable aircraft: observersCopy) {
+			if (this != aircraft && coordinates.equals(aircraft.getCoordinates())) {
+				PrintInFile.getInstance().print(weatherTower.crashMessage(this, aircraft));
+				PrintInFile.getInstance().print("Helicopter#" + name + "(" + id + ") MAYDAY MAYDAY " + aircraft.getName().toUpperCase() + "(" + aircraft.getId() + ") I'M GONNA HIT YOU !! DO YOU COPY ME ? CHANGE YOUR TRAJECTORY !!!");
+				PrintInFile.getInstance().print(aircraft.crashMessage());
+				weatherTower.unregister(aircraft);
+				weatherTower.unregister(this);
+				break;
+			}
+		}
+	}
 }

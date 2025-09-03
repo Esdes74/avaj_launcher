@@ -8,8 +8,8 @@ import src.ExitException;
 import java.lang.String;
 
 public class Baloon extends Aircraft {
-	public	Baloon(long p_id, String p_name, Coordinates p_coordinates) { super(p_id, p_name, p_coordinates); };
-	public	void updateConditions() throws ExitException {
+	public		Baloon(long p_id, String p_name, Coordinates p_coordinates) { super(p_id, p_name, p_coordinates); };
+	public		void updateConditions() throws ExitException {
 		String	currentWeather;
 
 		currentWeather = weatherTower.getWeather(coordinates);
@@ -35,8 +35,27 @@ public class Baloon extends Aircraft {
 			PrintInFile.getInstance().print("Baloon#" + name + "(" + id + ") Landing");
 			weatherTower.unregister(this);
 		}
+
+		crashVerification();
 	};
 
-	public	String registeredMessage() throws ExitException { return "Baloon#" + name + "(" + id + ") Registered to weather tower"; }
-	public	String unregisteredMessage() throws ExitException { return "Baloon#" + name + "(" + id + ") Unregistered to weather tower"; }
+	public		String registeredMessage() throws ExitException { return "Baloon#" + name + "(" + id + ") Registered to weather tower"; }
+	public		String unregisteredMessage() throws ExitException { return "Baloon#" + name + "(" + id + ") Unregistered to weather tower"; }
+	public		String crashMessage() throws ExitException { return "Baloon#" + name + "(" + id + ") OOOH MY GOD, I CAN'T DO ANYTHING TO AVOID IT !!!"; }
+
+	protected	void crashVerification() throws ExitException {
+		ArrayList<Flyable> observers = weatherTower.getObservers();
+		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);
+
+		for (Flyable aircraft: observersCopy) {
+			if (this != aircraft && coordinates.equals(aircraft.getCoordinates())) {
+				PrintInFile.getInstance().print(weatherTower.crashMessage(this, aircraft));
+				PrintInFile.getInstance().print("Baloon#" + name + "(" + id + ") WATCH OUT " + aircraft.getName().toUpperCase() + "(" + aircraft.getId() + ") I'M GONNA CRASH ON YOU !!");
+				PrintInFile.getInstance().print(aircraft.crashMessage());
+				weatherTower.unregister(aircraft);
+				weatherTower.unregister(this);
+				break;
+			}
+		}
+	}
 }

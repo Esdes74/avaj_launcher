@@ -17,7 +17,11 @@ public class Aircraft extends Flyable {
 		coordinates = p_coordinates;
 	};
 
+	public		Coordinates getCoordinates() { return coordinates; }
+
 	public		long getId() { return id; };
+	public		String getName() { return name; };
 	public		String registeredMessage() throws ExitException { return ""; }
 	public		String unregisteredMessage() throws ExitException { return ""; }
+	public		String crashMessage() throws ExitException { return ""; }
 }

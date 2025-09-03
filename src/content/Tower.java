@@ -33,6 +33,9 @@ public class Tower {
 	}
 
 	public		ArrayList<Flyable> getObservers() { return observers; };
+	public		String crashMessage(Flyable aircraftOne, Flyable aircraftTwo) throws ExitException {
+		return "Tower say: " + aircraftOne.getName() + "(" + aircraftOne.getId() + ") do you copy me ? You going to hit " + aircraftTwo.getName() + "(" + aircraftTwo.getId() + ")";
+	}
 
 	protected	void conditionChanged() throws ExitException {
 		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);

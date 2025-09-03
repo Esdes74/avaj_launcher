@@ -14,6 +14,10 @@ public abstract class Flyable {
 		AircraftFactory.getInstance().registerTower(p_tower);
 	};
 
+	public abstract	long getId();
+	public abstract	String getName();
 	public abstract	String registeredMessage() throws ExitException;
 	public abstract	String unregisteredMessage() throws ExitException;
+	public abstract String crashMessage() throws ExitException;
+	public abstract	Coordinates getCoordinates();
 }
