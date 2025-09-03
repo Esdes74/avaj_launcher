@@ -6,7 +6,7 @@ import src.singletons.PrintInFile;
 import src.utils.Utils;
 import src.ExitException;
 import java.util.ArrayList;
-import java.util.ListIterator;
+import java.lang.String;
 
 public class Tower {
 	private		ArrayList<Flyable> observers = new ArrayList<Flyable>();

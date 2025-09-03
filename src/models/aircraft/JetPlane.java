@@ -6,6 +6,7 @@ import src.utils.Coordinates;
 import src.singletons.PrintInFile;
 import src.ExitException;
 import java.lang.String;
+import java.util.ArrayList;
 
 public class JetPlane extends Aircraft {
 	public		JetPlane(long p_id, String p_name, Coordinates p_coordinates) { super(p_id, p_name, p_coordinates); };

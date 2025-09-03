@@ -43,6 +43,8 @@ public class Main {
 
 			while (weathersChanged < simulationLength) {
 				controlTower.changeWeather();
+				if (weathersChanged % 10 == 0)
+					controlTower.clearCoordinateWeather();
 				weathersChanged++;
 			}
 		} catch (IOException e) {
