@@ -10,16 +10,35 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 public class WeatherTower extends Tower {
+	private	boolean weatherChanged = false;
 	private	LinkedHashMap<Coordinates, String> coordinateWeather = new LinkedHashMap<Coordinates, String>();
 
 	public	String getWeather(Coordinates p_coordinates) {
+		int		drawForcedChanged;
+		int		observerSize = getObservers().size();
 		String	weather;
+		Random	randomGenerator = new Random();
 
 		weather = WeatherProvider.getInstance().getCurrentWeather(p_coordinates);
-		if (coordinateWeather.get(p_coordinates) == null) 
+		if (coordinateWeather.get(p_coordinates) == null) {
 			coordinateWeather.put(p_coordinates, weather);
-		else
+		} 
+		else {
+			if (weather != coordinateWeather.get(p_coordinates))
+				weatherChanged = true;
+			
+			drawForcedChanged = randomGenerator.nextInt(observerSize);
+
+			if (getObservers().getLast().getCoordinates().equals(p_coordinates) || 
+			(weatherChanged == false && drawForcedChanged <= observerSize / 2)) {
+				while (weatherChanged == false && weather == coordinateWeather.get(p_coordinates)) {
+					weather = WeatherProvider.getInstance().getCurrentWeather(p_coordinates);
+				}
+				weatherChanged = false;
+			}
+
 			coordinateWeather.replace(p_coordinates, weather);
+		}
 
 		return coordinateWeather.get(p_coordinates);
 	};
