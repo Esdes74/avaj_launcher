@@ -2,6 +2,7 @@ package src.abst;
 
 import src.models.WeatherTower;
 import src.singletons.AircraftFactory;
+import src.utils.Coordinates;
 import src.ExitException;
 import java.lang.String;
 

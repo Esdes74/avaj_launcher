@@ -1,7 +1,7 @@
 package src.models.aircraft;
 
+import src.abst.Flyable;
 import src.content.Aircraft;
-import src.singletons.WeatherProvider;
 import src.utils.Coordinates;
 import src.singletons.PrintInFile;
 import src.ExitException;

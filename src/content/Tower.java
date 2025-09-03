@@ -3,8 +3,6 @@ package src.content;
 import src.abst.Flyable;
 import src.ExitException;
 import src.singletons.PrintInFile;
-import src.utils.Utils;
-import src.ExitException;
 import java.util.ArrayList;
 import java.lang.String;
 

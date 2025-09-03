@@ -2,6 +2,7 @@ package src.singletons;
 
 import src.utils.Coordinates;
 import java.lang.String;
+import java.util.Random;
 
 public class WeatherProvider {
 	private static	WeatherProvider instance;

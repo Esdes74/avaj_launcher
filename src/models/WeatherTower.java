@@ -1,5 +1,6 @@
 package src.models;
 
+import src.abst.Flyable;
 import src.content.Tower;
 import src.utils.Coordinates;
 import src.singletons.WeatherProvider;
@@ -8,6 +9,7 @@ import src.ExitException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
+import java.util.Random;
 
 public class WeatherTower extends Tower {
 	private	boolean weatherChanged = false;
