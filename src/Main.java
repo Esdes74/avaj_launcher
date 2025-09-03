@@ -82,7 +82,7 @@ public class Main {
 
 	private static	String[] parseLine(String line) throws ExitException {
 		String[]	splitted;
-		int			height = -1;
+		int			longitude = -1, latitude = -1, height = -1;
 
 		splitted = line.split(" ");
 		if (splitted.length != 5)
@@ -93,13 +93,17 @@ public class Main {
 		splitted[0].equalsIgnoreCase("jetplane") == false)
 			Utils.exit(1, "Reading error: Wrong aircraft type");
 
-		height = Integer.parseInt(splitted[4]);
-		if ((Utils.isOnlyNumber(splitted[2]) == false ||
+		if (Utils.isOnlyNumber(splitted[2]) == false ||
 		Utils.isOnlyNumber(splitted[3]) == false ||
-		Utils.isOnlyNumber(splitted[4]) == false) ||
-		height <= 0)
+		Utils.isOnlyNumber(splitted[4]) == false)
 			Utils.exit(1, "Reading error: Wrong informations");
-		
+			
+		longitude = Integer.parseInt(splitted[2]);
+		latitude = Integer.parseInt(splitted[3]);
+		height = Integer.parseInt(splitted[4]);
+		if (longitude < 0 || latitude < 0 || height <0)
+			Utils.exit(1, "Reading error: Wrong coordinates");
+
 		return splitted;
 	}
 
