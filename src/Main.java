@@ -41,15 +41,14 @@ public class Main {
 				createAircraft(splittedLine);
 			}
 
+			while (weathersChanged < simulationLength) {
+				controlTower.changeWeather();
+				weathersChanged++;
+			}
 		} catch (IOException e) {
 			Utils.exit(1, "Reading error: " + e.getMessage());
 		} catch (ExitException e) {
 			System.exit(e.getCode());
-		}
-
-		while (weathersChanged < simulationLength) {
-			controlTower.changeWeather();
-			weathersChanged++;
 		}
 
 		controlTower.closeTower();

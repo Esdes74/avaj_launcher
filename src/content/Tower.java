@@ -24,11 +24,7 @@ public class Tower {
 	public		void closeTower() throws ExitException {
 		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);
 		for (Flyable aircraft : observersCopy) {
-			try {
-				unregister(aircraft);
-			} catch (ExitException e) {
-				Utils.exit(1, "Error: Can't unregister all aircrafts");
-			}
+			unregister(aircraft);
 		}
 	}
 
@@ -40,11 +36,8 @@ public class Tower {
 	protected	void conditionChanged() throws ExitException {
 		ArrayList<Flyable> observersCopy = new ArrayList<>(observers);
 		for (Flyable aircraft : observersCopy) {
-			try {
+			if (observers.contains(aircraft))
 				aircraft.updateConditions();
-			} catch (ExitException e) {
-				Utils.exit(1, "Error: Can't update weather for all aircrafts");
-			}
 		}
 	};
 }
