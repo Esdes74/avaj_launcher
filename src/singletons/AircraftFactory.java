@@ -22,9 +22,10 @@ public class AircraftFactory {
 		long	lastId = -1;
 
 		try {
-			if (registeredId != null && registeredId.isEmpty() == false)
-				lastId = registeredId.getLast();
-			else
+			if (registeredId != null && registeredId.isEmpty() == false) {
+				lastId = registeredId.get(registeredId.size() - 1);
+				// lastId = registeredId.getLast();
+			} else
 				lastId = -1;
 		}
 		catch (NoSuchElementException expt) {
