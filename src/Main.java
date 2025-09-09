@@ -20,7 +20,8 @@ public class Main {
 		WeatherTower	controlTower = new WeatherTower();
 
 		if (args.length != 1) {
-			Utils.exit(1, "Error: Must have 1 argument");
+			System.out.println("Error: Must have 1 argument");
+			System.exit(1);
 		}
 
 		parseArgumentNameAndTestOpening(args[0]);
@@ -56,18 +57,27 @@ public class Main {
 		PrintInFile.getInstance().closeFile();
 	}
 
+
 	private static	void parseArgumentNameAndTestOpening(String name) throws ExitException {
-		if (Files.exists(Paths.get(name)) == false)
-			Utils.exit(1, "File error: File '" + name + "' doesn't exists");
+		if (Files.exists(Paths.get(name)) == false) {
+			System.out.println("File error: File '" + name + "' doesn't exists");
+			System.exit(1);
+		}
 
-		if (Files.isRegularFile(Paths.get(name)) == false)
-			Utils.exit(1, "File error: File '" + name + "' is a repository");
+		if (Files.isRegularFile(Paths.get(name)) == false) {
+			System.out.println("File error: File '" + name + "' is a repository");
+			System.exit(1);
+		}
 
-		if (Files.isReadable(Paths.get(name)) == false)
-			Utils.exit(1, "File error: Can't read '" + name + "'");
+		if (Files.isReadable(Paths.get(name)) == false) {
+			System.out.println("File error: Can't read '" + name + "'");
+			System.exit(1);
+		}
 
-		if (name.endsWith(".txt") == false)
-			Utils.exit(1, "File error: Wrong extension");
+		if (name.endsWith(".txt") == false) {
+			System.out.println("File error: Wrong extension");
+			System.exit(1);
+		}
 	};
 
 	private static	void parseFirstLine(String line) throws ExitException {
