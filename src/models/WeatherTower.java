@@ -32,8 +32,11 @@ public class WeatherTower extends Tower {
 			drawForcedChanged = randomGenerator.nextInt(observerSize);
 
 			// if (getObservers().getLast().getCoordinates().equals(p_coordinates) || 
-			if (getObservers().get(getObservers().size() - 1).getCoordinates().equals(p_coordinates) || 
-			(weatherChanged == false && drawForcedChanged <= observerSize / 2)) {
+			if ((p_coordinates.getLatitude() < 500 && p_coordinates.getLatitude() > 0 &&
+			p_coordinates.getLongitude() < 500 && p_coordinates.getLongitude() > 0 && 
+			p_coordinates.getHeight() < 90) &&
+			(getObservers().get(getObservers().size() - 1).getCoordinates().equals(p_coordinates) || 
+			(weatherChanged == false && drawForcedChanged <= observerSize / 2))) {
 				while (weatherChanged == false && weather == coordinateWeather.get(p_coordinates)) {
 					weather = WeatherProvider.getInstance().getCurrentWeather(p_coordinates);
 				}
