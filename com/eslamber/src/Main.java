@@ -18,6 +18,7 @@ public class Main {
 		String			line;
 		String[]		splittedLine;
 		WeatherTower	controlTower = new WeatherTower();
+		String			trimmedLine;
 
 		if (args.length != 1) {
 			System.out.println("Error: Must have 1 argument");
@@ -30,14 +31,16 @@ public class Main {
 			if ((line = reader.readLine()) == null) {
 				Utils.exit(1, "File error: empty file");
 			} else {
-				parseFirstLine(line);
-				simulationLength = Integer.parseInt(line);
+				trimmedLine = line.trim();
+				parseFirstLine(trimmedLine);
+				simulationLength = Integer.parseInt(trimmedLine);
 			}
 
 			AircraftFactory.getInstance().registerTower(controlTower);
 
 			while ((line = reader.readLine()) != null) {
-				splittedLine = parseLine(line);
+				trimmedLine = line.trim();
+				splittedLine = parseLine(trimmedLine);
 				createAircraft(splittedLine);
 			}
 
@@ -82,10 +85,8 @@ public class Main {
 
 	private static	void parseFirstLine(String line) throws ExitException {
 		String[]	splitted;
-		String	trimmedLine;
 
-		trimmedLine = line.trim();
-		splitted = trimmedLine.split("\\s+");
+		splitted = line.split("\\s+");
 		if (line.isBlank() || 
 		splitted.length != 1 || 
 		Utils.isOnlyNumber(line) == false) {
@@ -95,11 +96,9 @@ public class Main {
 
 	private static	String[] parseLine(String line) throws ExitException {
 		String[]	splitted;
-		String		trimmedLine;
 		int			longitude = -1, latitude = -1, height = -1;
 
-		trimmedLine = line.trim();
-		splitted = trimmedLine.split("\\s+");
+		splitted = line.split("\\s+");
 		if (splitted.length != 5)
 			Utils.exit(1, "Reading error: Wrong line format");
 
