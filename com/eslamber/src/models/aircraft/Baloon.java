@@ -1,10 +1,10 @@
-package src.models.aircraft;
+package com.eslamber.src.models.aircraft;
 
-import src.abst.Flyable;
-import src.content.Aircraft;
-import src.utils.Coordinates;
-import src.singletons.PrintInFile;
-import src.ExitException;
+import com.eslamber.src.abst.Flyable;
+import com.eslamber.src.content.Aircraft;
+import com.eslamber.src.utils.Coordinates;
+import com.eslamber.src.singletons.PrintInFile;
+import com.eslamber.src.ExitException;
 import java.lang.String;
 import java.util.ArrayList;
 

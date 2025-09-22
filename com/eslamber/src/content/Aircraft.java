@@ -1,9 +1,9 @@
-package src.content;
+package com.eslamber.src.content;
 
-import src.abst.Flyable;
-import src.utils.Coordinates;
+import com.eslamber.src.abst.Flyable;
+import com.eslamber.src.utils.Coordinates;
 import java.lang.String;
-import src.ExitException;
+import com.eslamber.src.ExitException;
 
 public class Aircraft extends Flyable {
 	protected	long id;

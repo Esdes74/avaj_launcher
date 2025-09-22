@@ -1,10 +1,10 @@
-package src;
+package com.eslamber.src;
 
-import src.utils.Utils;
-import src.utils.Coordinates;
-import src.singletons.AircraftFactory;
-import src.singletons.PrintInFile;
-import src.models.WeatherTower;
+import com.eslamber.src.utils.Utils;
+import com.eslamber.src.utils.Coordinates;
+import com.eslamber.src.singletons.AircraftFactory;
+import com.eslamber.src.singletons.PrintInFile;
+import com.eslamber.src.models.WeatherTower;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -82,8 +82,10 @@ public class Main {
 
 	private static	void parseFirstLine(String line) throws ExitException {
 		String[]	splitted;
+		String	trimmedLine;
 
-		splitted = line.split(" ");
+		trimmedLine = line.trim();
+		splitted = trimmedLine.split("\\s+");
 		if (line.isBlank() || 
 		splitted.length != 1 || 
 		Utils.isOnlyNumber(line) == false) {
@@ -93,9 +95,11 @@ public class Main {
 
 	private static	String[] parseLine(String line) throws ExitException {
 		String[]	splitted;
+		String		trimmedLine;
 		int			longitude = -1, latitude = -1, height = -1;
 
-		splitted = line.split(" ");
+		trimmedLine = line.trim();
+		splitted = trimmedLine.split("\\s+");
 		if (splitted.length != 5)
 			Utils.exit(1, "Reading error: Wrong line format");
 

@@ -1,11 +1,11 @@
-package src.models;
+package com.eslamber.src.models;
 
-import src.abst.Flyable;
-import src.content.Tower;
-import src.utils.Coordinates;
-import src.singletons.WeatherProvider;
+import com.eslamber.src.abst.Flyable;
+import com.eslamber.src.content.Tower;
+import com.eslamber.src.utils.Coordinates;
+import com.eslamber.src.singletons.WeatherProvider;
 import java.lang.String;
-import src.ExitException;
+import com.eslamber.src.ExitException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;

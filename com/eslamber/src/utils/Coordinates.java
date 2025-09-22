@@ -1,4 +1,4 @@
-package src.utils;
+package com.eslamber.src.utils;
 
 public class Coordinates {
 	private	int longitude;

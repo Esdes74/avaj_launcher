@@ -1,6 +1,6 @@
-package src.singletons;
+package com.eslamber.src.singletons;
 
-import src.utils.Coordinates;
+import com.eslamber.src.utils.Coordinates;
 import java.lang.String;
 import java.util.Random;
 

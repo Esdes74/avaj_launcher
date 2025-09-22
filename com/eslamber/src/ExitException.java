@@ -1,4 +1,4 @@
-package src;
+package com.eslamber.src;
 
 // Exception vérifiée (hérite de Exception)
 public class ExitException extends Exception {

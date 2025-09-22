@@ -1,7 +1,7 @@
-package src.singletons;
+package com.eslamber.src.singletons;
 
-import src.ExitException;
-import src.utils.Utils;
+import com.eslamber.src.ExitException;
+import com.eslamber.src.utils.Utils;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;

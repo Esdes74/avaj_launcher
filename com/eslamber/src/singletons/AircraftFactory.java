@@ -1,13 +1,13 @@
-package src.singletons;
+package com.eslamber.src.singletons;
 
-import src.ExitException;
-import src.abst.Flyable;
-import src.utils.Coordinates;
-import src.utils.Utils;
-import src.models.aircraft.Helicopter;
-import src.models.aircraft.Baloon;
-import src.models.aircraft.JetPlane;
-import src.models.WeatherTower;
+import com.eslamber.src.ExitException;
+import com.eslamber.src.abst.Flyable;
+import com.eslamber.src.utils.Coordinates;
+import com.eslamber.src.utils.Utils;
+import com.eslamber.src.models.aircraft.Helicopter;
+import com.eslamber.src.models.aircraft.Baloon;
+import com.eslamber.src.models.aircraft.JetPlane;
+import com.eslamber.src.models.WeatherTower;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;

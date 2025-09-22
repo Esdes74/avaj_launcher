@@ -1,9 +1,9 @@
-package src.abst;
+package com.eslamber.src.abst;
 
-import src.models.WeatherTower;
-import src.singletons.AircraftFactory;
-import src.utils.Coordinates;
-import src.ExitException;
+import com.eslamber.src.models.WeatherTower;
+import com.eslamber.src.singletons.AircraftFactory;
+import com.eslamber.src.utils.Coordinates;
+import com.eslamber.src.ExitException;
 import java.lang.String;
 
 public abstract class Flyable {

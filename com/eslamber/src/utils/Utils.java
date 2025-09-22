@@ -1,7 +1,7 @@
-package src.utils;
+package com.eslamber.src.utils;
 
-import src.ExitException;
-import src.singletons.PrintInFile;
+import com.eslamber.src.ExitException;
+import com.eslamber.src.singletons.PrintInFile;
 
 public class Utils {
 	public static	boolean isOnlyNumber(String line) {
