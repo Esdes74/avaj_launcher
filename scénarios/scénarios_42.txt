@@ -7,4 +7,4 @@ Helicopter H2 22 33 44
 Helicopter H3 98 68 99
 Baloon B3 102 22 34
 JetPlane J2 11 99 768
-		      		Helicopter 				  dfd 	    223 23    54          
+Helicopter dfd 223 23 54
