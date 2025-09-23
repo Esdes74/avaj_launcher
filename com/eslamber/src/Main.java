@@ -54,6 +54,10 @@ public class Main {
 			Utils.exit(1, "Reading error: " + e.getMessage());
 		} catch (ExitException e) {
 			System.exit(e.getCode());
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+			PrintInFile.getInstance().closeFile();
+			System.exit(1);
 		}
 
 		controlTower.closeTower();
