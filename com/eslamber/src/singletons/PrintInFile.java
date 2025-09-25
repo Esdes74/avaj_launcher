@@ -4,6 +4,9 @@ import com.eslamber.src.ExitException;
 import com.eslamber.src.utils.Utils;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.io.BufferedWriter;
 
 public class PrintInFile {
@@ -38,6 +41,15 @@ public class PrintInFile {
 				closeFile();
 				Utils.exit(1, "Simulation.txt file error: " + expt.getMessage());
 			}
+		}
+	}
+
+	public			void deleteFile() {
+		Path path = Paths.get("simulation.txt");
+		try {
+			Files.deleteIfExists(path);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

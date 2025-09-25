@@ -56,6 +56,7 @@ public class Main {
 			System.exit(e.getCode());
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
+			PrintInFile.getInstance().deleteFile();
 			PrintInFile.getInstance().closeFile();
 			System.exit(1);
 		}
