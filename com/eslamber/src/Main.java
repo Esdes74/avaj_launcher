@@ -27,6 +27,14 @@ public class Main {
 
 		parseArgumentNameAndTestOpening(args[0]);
 
+		if (Files.exists(Paths.get("simulation.txt")) &&
+		(Files.isRegularFile(Paths.get("simulation.txt")) == false ||
+		Files.isReadable(Paths.get("simulation.txt")) == false ||
+		Files.isWritable(Paths.get("simulation.txt")) == false)) {
+			System.out.println("File error: Can't open 'simulation.txt'");
+			System.exit(1);
+		}
+
 		try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
 			if ((line = reader.readLine()) == null) {
 				Utils.exit(1, "File error: empty file");
