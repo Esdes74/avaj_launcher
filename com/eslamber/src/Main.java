@@ -120,6 +120,9 @@ public class Main {
 		splitted[0].equalsIgnoreCase("jetplane") == false)
 			Utils.exit(1, "Reading error: Wrong aircraft type");
 
+		if (Utils.isAlphaNumeric(splitted[1]) == false)
+			Utils.exit(1, "Reading error: Wrong name format");
+
 		if (Utils.isOnlyNumber(splitted[2]) == false ||
 		Utils.isOnlyNumber(splitted[3]) == false ||
 		Utils.isOnlyNumber(splitted[4]) == false)

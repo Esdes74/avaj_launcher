@@ -28,6 +28,18 @@ public class Utils {
 		return false;
 	}
 
+	public static	boolean isAlphaNumeric(String line) {
+		int	index = 0;
+
+		while (index < line.length() && (isAlphabet(line.charAt(index)) || isNumber(line.charAt(index)))) {
+			index++;
+		}
+
+		if (index == line.length())
+			return true;
+		return false;
+	}
+
 	public static	boolean isNumber(char c) {
 		return c >= '0' && c <= '9';
 	}
